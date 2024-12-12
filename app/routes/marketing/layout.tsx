@@ -1,11 +1,7 @@
-import { title } from "process";
+import { TestFile } from "~/src/components/testFile";
 import type { Route } from "../+types/home";
-
-interface MarketingProps {
-    name: string;
-    description: string;
-    content: string;
-}
+import { useState } from 'react';
+import { useNavigate } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,14 +10,19 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home(
-    {name, description, content}: MarketingProps) 
+export default function Layout()
 {
+  const [count, setCount] = useState(0);
+  const navigate = useNavigate();
+
   return  (
     <>
-        <p>{name}</p>
-        <p>{description}</p>
-        <p>{content}</p>
+        <h1>Home</h1>
+        <TestFile int={2} str="string" bool={true} />
+        <div className="flex flex-col">
+          <button onClick={() => setCount(prev => prev +1)}>Clicked {count} times(s)</button>
+          <button className="mt-1 bg-gray-300" onClick={() => navigate("/marketing")}>Redirect to Market</button>
+        </div>
     </>  
   );
 }
