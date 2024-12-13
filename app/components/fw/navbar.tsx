@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { LogOutIcon } from 'lucide-react';
-import { DropdownMenu } from '../ui/dropdown-menu';
+import { DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel
+ } from '../ui/dropdown-menu';
+ import { UserInfo, SetupInfo } from '~/types/base';
 
 interface NavbarProps {
     onSelect: (selected: string) => void,
@@ -10,17 +17,6 @@ interface NavbarProps {
     isFwAdmin: boolean,
     isInstallationModalOpen: boolean,
     setupInfo: SetupInfo
-}
-
-interface UserInfo {
-    GUID: string,
-    Name: string,
-    IsLive: boolean
-}
-interface SetupInfo {
-    SetupId: string,
-    fwCust_Id: number,
-    triggerID: number,
 }
 
 export const Navbar = ({onSelect, selectedOption, userInfo, isFwAdmin, isInstallationModalOpen, setupInfo}: NavbarProps) => {
@@ -85,7 +81,7 @@ export const Navbar = ({onSelect, selectedOption, userInfo, isFwAdmin, isInstall
             <DropdownMenuSeparator />
             {isFWAdmin ? (
               <>
-                <DropdownMenuItem className='hover:cursor-pointer' onClick={isInstallationModalOpen }>Installations</DropdownMenuItem>
+                <DropdownMenuItem className='hover:cursor-pointer' onClick={() => isInstallationModalOpen =true }>Installations</DropdownMenuItem>
                 <DropdownMenuSeparator />
               </>
               ) : (null)}

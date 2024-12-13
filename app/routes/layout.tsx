@@ -8,6 +8,11 @@ export function meta({}: Route.MetaArgs) {
     ];
   }
 
+async function clientLoader() {
+  const guid = sessionStorage.getItem("guid") ? sessionStorage.getItem("guid") : "";
+  
+}
+
 export default function Layout() {
     return <div>
                 Layout page
