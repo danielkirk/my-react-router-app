@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface TestFileProps {
     int: number;
     str: string;
